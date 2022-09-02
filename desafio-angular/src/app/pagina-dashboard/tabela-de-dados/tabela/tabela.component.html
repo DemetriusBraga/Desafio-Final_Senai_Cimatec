@@ -1,0 +1,82 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="font-weight th1">Código - VIN</th>
+      <th scope="col" class="font-weight th2">Odômetro</th>
+      <th scope="col" class="font-weight th2">Nível de Combustível</th>
+      <th scope="col" class="font-weight th2">Status</th>
+      <th scope="col" class="font-weight th2">Lat.</th>
+      <th scope="col" class="font-weight th2">Long.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td px-2>
+        <input
+          class="font-weight"
+          type="text"
+          placeholder="Insira o código VIN"
+          [formControl]="tabelaDeDados"
+          [(ngModel)]="valorDoInput"
+        />
+        <button type="button" class="btn opacity-75 rounded">
+          <i class="fa fa-plus"></i>
+        </button>
+        <button type="button" class="btn opacity-75 rounded">
+          <i class="fa fa-refresh"></i>
+        </button>
+        <button type="button" class="btn opacity-75 rounded">
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+
+      <td *ngIf="filtroPeloInput$ | async as veiculoDados; else elseBlock">
+        <div *ngFor="let veiculoDado of veiculoDados">
+          {{ veiculoDado.Odometer }} Km
+        </div>
+      </td>
+      <td *ngIf="filtroPeloInput$ | async as veiculoDados; else elseBlock">
+        <div *ngFor="let veiculoDado of veiculoDados">
+          {{ veiculoDado.Fuel_Level }} %
+        </div>
+      </td>
+      <td *ngIf="filtroPeloInput$ | async as veiculoDados; else elseBlock">
+        <div *ngFor="let veiculoDado of veiculoDados">
+          {{ veiculoDado.Vehicle_Status }}
+        </div>
+      </td>
+      <td *ngIf="filtroPeloInput$ | async as veiculoDados; else elseBlock">
+        <div *ngFor="let veiculoDado of veiculoDados">
+          {{ veiculoDado.Latitude }}
+        </div>
+      </td>
+      <td *ngIf="filtroPeloInput$ | async as veiculoDados; else elseBlock">
+        <div *ngFor="let veiculoDado of veiculoDados">
+          {{ veiculoDado.Longitude }}
+        </div>
+      </td>
+
+      <!-- <td *ngIf="veiculoDadoSelecionado">
+        {{ veiculoDadoSelecionado[0].Odometer }} Km
+      </td>
+      <td *ngIf="veiculoDadoSelecionado">
+        {{ veiculoDadoSelecionado[0].Fuel_Level }} %
+      </td>
+      <td *ngIf="veiculoDadoSelecionado">
+        {{ veiculoDadoSelecionado[0].Vehicle_Status }}
+      </td>
+      <td *ngIf="veiculoDadoSelecionado">
+        {{ veiculoDadoSelecionado[0].Latitude }}
+      </td>
+      <td *ngIf="veiculoDadoSelecionado">
+        {{ veiculoDadoSelecionado[0].Longitude }}
+      </td> -->
+    </tr>
+
+    <tr class="tdVazio">
+      <td colspan="6"></td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #elseBlock></ng-template>
