@@ -14,7 +14,7 @@ class VehicleData {
     }
 
     lista(valor, res) {
-        const sql = `SELECT * FROM VehiclesData WHERE VIN = '${valor}'`
+        const sql = `SELECT id, Odometer, Tire_Pressure, Vehicle_Status, Battery_Status, Fuel_Level, Latitude, Longitude FROM VehiclesData WHERE VIN = '${valor}'`
 
         conexao.query(sql, (erro, resultados) => {
             if(erro) {
@@ -29,10 +29,9 @@ class VehicleData {
     }
 
     buscaPorId(id, res) {
-        const sql = `SELECT * FROM VehiclesData WHERE id=${id}`
+        const sql = `SELECT id, Odometer, Tire_Pressure, Vehicle_Status, Battery_Status, Fuel_Level, Latitude, Longitude FROM VehiclesData WHERE id=${id}`
 
         conexao.query(sql, (erro, resultados) => {
-            // const vehicleData = resultados[0]
             if(erro) {
                 res.status(400).json(erro);
             } else {
@@ -40,19 +39,6 @@ class VehicleData {
             }
         });
     }
-    // buscaPorVin(vinNumber, res) {
-    //     const sql = `SELECT * FROM VehiclesData WHERE VIN='${vinNumber}'`
-
-    //     conexao.query(sql, (erro, resultados) => {
-    //         // const vehicleData = resultados[0]
-    //         if(erro) {
-    //             res.status(400).json(erro);
-    //         } else {
-    //             // res.status(200).json(vehicleData);
-    //             res.status(200).json(resultados);
-    //         }
-    //     });
-    // }
 
     altera(id, valores, res) {
         const sql = 'UPDATE VehiclesData SET ? WHERE id=?'

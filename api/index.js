@@ -1,8 +1,8 @@
 const customExpress = require('./config/customExpress');
 const conexao = require('./infraestrutura/conexao');
 const TabelaUsers = require('./infraestrutura/tabelaUsers');
-const TabelaVehicles = require('./infraestrutura/TabelaVehicles');
-const TabelaVehiclesData = require('./infraestrutura/TabelaVehiclesData');
+const TabelaVehicles = require('./infraestrutura/tabelaVehicles');
+const TabelaVehiclesData = require('./infraestrutura/tabelaVehiclesData');
 const cors = require('cors');
 
 
