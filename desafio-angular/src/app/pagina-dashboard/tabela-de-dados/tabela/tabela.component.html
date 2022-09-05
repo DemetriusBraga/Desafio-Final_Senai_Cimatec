@@ -30,28 +30,28 @@
         </button>
       </td>
 
-      <td *ngIf="filtroPeloInput$ | async as veiculoDados; else elseBlock">
-        <div *ngFor="let veiculoDado of veiculoDados">
+      <td *ngIf="filtroPeloInput$ | async as vehicleData; else elseBlock">
+        <div *ngFor="let veiculoDado of vehicleData">
           {{ veiculoDado.Odometer }} Km
         </div>
       </td>
-      <td *ngIf="filtroPeloInput$ | async as veiculoDados; else elseBlock">
-        <div *ngFor="let veiculoDado of veiculoDados">
+      <td *ngIf="filtroPeloInput$ | async as vehicleData; else elseBlock">
+        <div *ngFor="let veiculoDado of vehicleData">
           {{ veiculoDado.Fuel_Level }} %
         </div>
       </td>
-      <td *ngIf="filtroPeloInput$ | async as veiculoDados; else elseBlock">
-        <div *ngFor="let veiculoDado of veiculoDados">
+      <td *ngIf="filtroPeloInput$ | async as vehicleData; else elseBlock">
+        <div *ngFor="let veiculoDado of vehicleData">
           {{ veiculoDado.Vehicle_Status }}
         </div>
       </td>
-      <td *ngIf="filtroPeloInput$ | async as veiculoDados; else elseBlock">
-        <div *ngFor="let veiculoDado of veiculoDados">
+      <td *ngIf="filtroPeloInput$ | async as vehicleData; else elseBlock">
+        <div *ngFor="let veiculoDado of vehicleData">
           {{ veiculoDado.Latitude }}
         </div>
       </td>
-      <td *ngIf="filtroPeloInput$ | async as veiculoDados; else elseBlock">
-        <div *ngFor="let veiculoDado of veiculoDados">
+      <td *ngIf="filtroPeloInput$ | async as vehicleData; else elseBlock">
+        <div *ngFor="let veiculoDado of vehicleData">
           {{ veiculoDado.Longitude }}
         </div>
       </td>

@@ -10,10 +10,11 @@ import { VeiculoDado } from './../../veiculo/veiculo-dados';
   styleUrls: ['./tabela.component.css'],
 })
 export class TabelaComponent implements OnInit {
+  constructor(private veiculoDadosService: VeiculoDadosService) {}
+  // veiculoDadoSelecionado!: VeiculoDado | any;
+
   valorDoInput!: string;
   tabelaDeDados = new FormControl();
-
-  // veiculoDadoSelecionado!: VeiculoDado | any;
   filtroPeloInput$ = this.tabelaDeDados.valueChanges.pipe(
     debounceTime(500),
     filter(
@@ -21,7 +22,7 @@ export class TabelaComponent implements OnInit {
     ),
     distinctUntilChanged(),
     switchMap((valorDigitado) =>
-      this.veiculoDadosService.buscaVeiculoDados(valorDigitado)
+      this.veiculoDadosService.buscaPorVin(valorDigitado)
     )
   );
   // .subscribe((valor) => {
@@ -30,33 +31,5 @@ export class TabelaComponent implements OnInit {
   //   }
   // });
 
-  // filtroPeloInput$ = this.tabelaDeDados.valueChanges.pipe(
-  //   switchMap((valorDigitado) =>
-  //     this.veiculoDadosService.buscaPorVin(valorDigitado)
-  //   )
-  // );
-
-  constructor(private veiculoDadosService: VeiculoDadosService) {
-    // this.veiculoDadosService.allVin().subscribe((data) => {
-    //   if (data) this.veiculoDadoSelecionado = data;
-    //   console.log(this.veiculoDadoSelecionado);
-    // });
-    // console.log(this.filtroPeloInput$);
-  }
-  // enviaInput(VIN: string) {
-  //   this.veiculoDadosService
-  //     .buscaPorVin(VIN)
-  //     .subscribe((veiculoDadoSelecionado) => {
-  //       this.veiculoDadoSelecionado = veiculoDadoSelecionado;
-  //     });
-  // }
-
   ngOnInit(): void {}
-  // enviaVeiculoVin(VIN: string) {
-  //   this.veiculoDadosService
-  //     .buscaVeiculoDados(VIN)
-  //     .subscribe((veiculoDadoSelecionado) => {
-  //       this.veiculoDadoSelecionado = veiculoDadoSelecionado;
-  //     });
-  // }
 }

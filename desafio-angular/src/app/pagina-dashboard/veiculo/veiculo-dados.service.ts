@@ -16,14 +16,14 @@ export class VeiculoDadosService {
     const params = valor ? new HttpParams().append('valor', valor) : undefined;
     return this.httpClient
       .get<VeiculosDadosAPI>(`${API}/vehicledata`, { params })
-      .pipe(pluck('vehicleData'));
+      .pipe(map((api) => api.vehicleData));
   }
 
   // buscaVeiculoDados(valor?: string) {
   //   const params = valor ? new HttpParams().append('valor', valor) : undefined;
   //   return this.httpClient
   //     .get<VeiculosDadosAPI>(`${API}/vehicledata`, { params })
-  //     .pipe(map((api) => api.vehicleData));
+  //     .pipe(pluck('vehicleData'));
   // }
 
   buscaPorVin(valor?: string) {
@@ -31,21 +31,4 @@ export class VeiculoDadosService {
       .get<VeiculosDadosAPI>(`${API}/vehicledata/vin/${valor}`)
       .pipe(pluck('vehicleData'));
   }
-
-  allVin() {
-    return this.httpClient.get<VeiculoDado>(`${API}/vehicledata`);
-  }
-
-  // buscaPorVin(valor?: string) {
-  //   const params = valor ? new HttpParams().append('valor', valor) : undefined;
-  //   return this.httpClient
-  //     .get<VeiculosDadosAPI>(`${API}/vehicledata/vin/${valor}`, {
-  //       params,
-  //     })
-  //     .pipe(pluck('vehicleData'));
-  // }
-
-  // inputVin(VIN: number): Observable<VeiculoDados> {
-  //   return this.httpClient.get<VeiculoDados>(`${API}/vehicledata/vin/${VIN}`);
-  // }
 }
