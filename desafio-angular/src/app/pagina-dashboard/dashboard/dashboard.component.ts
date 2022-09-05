@@ -24,12 +24,11 @@ export class DashboardComponent implements OnInit {
   atualizados: any = [];
   porcentagemChart1 = 0;
   porcentagemChart2 = 0;
-  // private dados: any;
 
   constructor(private veiculoService: VeiculoService) {}
 
   ngOnInit() {
-    // this.enviaVeiculoId('1');
+    this.enviaVeiculoId('1');
   }
 
   enviaVeiculoId(id: string) {
@@ -101,49 +100,4 @@ export class DashboardComponent implements OnInit {
       },
     };
   }
-
-  // init(): void {
-  //   if (typeof google !== 'undefined') {
-  //     google.charts.load('current', { packages: ['corechart'] });
-  //     setTimeout(() => {
-  //       google.charts.setOnLoadCallback(this.exibirGraficos());
-  //     }, 1000);
-  //   }
-  // }
-
-  // exibirGraficos(): void {
-  //   this.exibirDonutChart();
-  //   this.exibirDonutChart();
-  // }
-
-  // exibirDonutChart(): void {
-  //   const el = document.getElementById('donut_chart');
-  //   const chart = new google.visualization.PieChart(el);
-  //   const opcoes = this.obterOpcoes();
-
-  //   opcoes['pieHole'] = 0.3;
-  //   chart.draw(this.obterDadosVeiculo(), opcoes);
-  // }
-
-  // obterDadosVeiculo(): any {
-  //   const data = new google.visualization.DataTable();
-
-  //   data.addColumn('number', 'Model');
-  //   data.addColumn('number', 'Total_Vendas');
-  //   data.addRows(
-  //     this.dados
-  //     // ['Total_Vendas', this.veiculoSelecionado.volumetotal],
-  //     // ['Conectados', this.veiculoSelecionado.connected],
-  //   );
-
-  //   return data;
-  // }
-
-  // obterOpcoes(): any {
-  //   return {
-  //     title: 'Vendas',
-  //     width: 400,
-  //     height: 300,
-  //   };
-  // }
 }

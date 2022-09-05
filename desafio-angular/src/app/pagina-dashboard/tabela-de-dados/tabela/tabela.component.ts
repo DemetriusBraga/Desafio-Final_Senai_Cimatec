@@ -11,7 +11,6 @@ import { VeiculoDado } from './../../veiculo/veiculo-dados';
 })
 export class TabelaComponent implements OnInit {
   constructor(private veiculoDadosService: VeiculoDadosService) {}
-  // veiculoDadoSelecionado!: VeiculoDado | any;
 
   valorDoInput!: string;
   tabelaDeDados = new FormControl();
@@ -25,11 +24,5 @@ export class TabelaComponent implements OnInit {
       this.veiculoDadosService.buscaPorVin(valorDigitado)
     )
   );
-  // .subscribe((valor) => {
-  //   if (valor.length < 2) {
-  //     this.veiculoDadoSelecionado = valor;
-  //   }
-  // });
-
   ngOnInit(): void {}
 }

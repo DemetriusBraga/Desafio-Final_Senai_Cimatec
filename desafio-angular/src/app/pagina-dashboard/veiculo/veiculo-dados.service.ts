@@ -1,4 +1,4 @@
-import { pluck, Observable, map } from 'rxjs';
+import { pluck, Observable, map, tap } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -12,23 +12,19 @@ const API = environment.apiURL;
 export class VeiculoDadosService {
   constructor(private httpClient: HttpClient) {}
 
-  buscaVeiculoDados(valor?: string) {
-    const params = valor ? new HttpParams().append('valor', valor) : undefined;
+  buscaPorVin(valor?: string) {
     return this.httpClient
-      .get<VeiculosDadosAPI>(`${API}/vehicledata`, { params })
-      .pipe(map((api) => api.vehicleData));
+      .get<VeiculosDadosAPI>(`${API}/vehicledata/vin/${valor}`)
+      .pipe(
+        tap((valor_1) => console.log(valor_1)),
+        map((api) => api.vehiclesData)
+      );
   }
 
   // buscaVeiculoDados(valor?: string) {
   //   const params = valor ? new HttpParams().append('valor', valor) : undefined;
   //   return this.httpClient
   //     .get<VeiculosDadosAPI>(`${API}/vehicledata`, { params })
-  //     .pipe(pluck('vehicleData'));
+  //     .pipe(map((api) => api.vehiclesData));
   // }
-
-  buscaPorVin(valor?: string) {
-    return this.httpClient
-      .get<VeiculosDadosAPI>(`${API}/vehicledata/vin/${valor}`)
-      .pipe(map((api) => api.vehicleData));
-  }
 }
