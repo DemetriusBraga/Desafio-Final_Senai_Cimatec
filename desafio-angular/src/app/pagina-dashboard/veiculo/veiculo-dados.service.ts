@@ -29,6 +29,6 @@ export class VeiculoDadosService {
   buscaPorVin(valor?: string) {
     return this.httpClient
       .get<VeiculosDadosAPI>(`${API}/vehicledata/vin/${valor}`)
-      .pipe(pluck('vehicleData'));
+      .pipe(map((api) => api.vehicleData));
   }
 }
