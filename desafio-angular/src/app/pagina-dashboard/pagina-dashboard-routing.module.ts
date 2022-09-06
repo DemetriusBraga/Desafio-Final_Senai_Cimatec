@@ -1,16 +1,21 @@
+import { AdicionarComponent } from './tabela-de-dados/adicionar/adicionar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
+export const dashboardRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
   },
+  {
+    path: 'pagina-dashboard/tabela-de-dados/adicionar',
+    component: AdicionarComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(dashboardRoutes)],
   exports: [RouterModule],
 })
 export class PaginaDashboardRoutingModule {}

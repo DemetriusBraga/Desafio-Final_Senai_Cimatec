@@ -21,10 +21,23 @@ export class VeiculoDadosService {
       );
   }
 
-  // buscaVeiculoDados(valor?: string) {
-  //   const params = valor ? new HttpParams().append('valor', valor) : undefined;
-  //   return this.httpClient
-  //     .get<VeiculosDadosAPI>(`${API}/vehicledata`, { params })
-  //     .pipe(map((api) => api.vehiclesData));
-  // }
+  cadastraVeiculoDado(veiculoDado: VeiculoDado) {
+    return this.httpClient.post<VeiculoDado>(
+      `${API}/vehicledata/`,
+      veiculoDado
+    );
+  }
+
+  atualizaPorVin(veiculoDado: VeiculoDado) {
+    return this.httpClient.put<VeiculoDado>(
+      `${API}/vehicledata/vin/${veiculoDado.VIN}`,
+      veiculoDado
+    );
+  }
+
+  excluiPorVin(veiculoDado: VeiculoDado) {
+    return this.httpClient.delete<VeiculoDado>(
+      `${API}/vehicledata/vin/${veiculoDado.VIN}`
+    );
+  }
 }

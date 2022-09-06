@@ -1,0 +1,56 @@
+table {
+  margin-top: 10px;
+  margin-bottom: 0;
+  bottom: 0;
+}
+
+h3 {
+  margin-top: 40px;
+  color: #0261b4;
+}
+
+thead {
+  color: white;
+}
+
+input {
+  width: 70%;
+  margin-right: 0px;
+}
+
+.font-weight {
+  font-weight: 450;
+}
+
+.th1 {
+  width: 15%;
+  background-color: #0261b4;
+  border: solid thin black;
+}
+
+.th2 {
+  width: 10%;
+  background-color: #0261b4;
+  border: solid thin black;
+}
+
+td {
+  font-weight: 700;
+  border-bottom: 0;
+}
+
+.tdVazio {
+  background-color: #0261b4;
+  border: solid thin black;
+}
+
+button {
+  background-color: white;
+  color: black;
+  width: 150px;
+  height: 25px;
+  border: black solid thin;
+  padding: 0;
+  margin-left: 1px;
+  margin-bottom: 3px;
+}

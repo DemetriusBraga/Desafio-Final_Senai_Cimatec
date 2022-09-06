@@ -1,0 +1,76 @@
+<h3 class="text-center mb-4">
+  Insira os dados que deseja adicionar ou alterar
+</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="font-weight th1">Código - VIN</th>
+      <th scope="col" class="font-weight th2">Odômetro</th>
+      <th scope="col" class="font-weight th2">Pressão dos Pneus</th>
+      <th scope="col" class="font-weight th2">Status do Veículo</th>
+      <th scope="col" class="font-weight th2">Status da Bateria</th>
+      <th scope="col" class="font-weight th2">Nível de Combustível</th>
+      <th scope="col" class="font-weight th2">Latitude</th>
+      <th scope="col" class="font-weight th2">Longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="form-group" px-2>
+        <input
+          class="font-weight"
+          type="text"
+          placeholder="Insira o código VIN"
+          minlength="20"
+          required
+          [(ngModel)]="veiculoDado.VIN"
+        />
+      </td>
+
+      <td class="form-group">
+        <input type="text" required [(ngModel)]="veiculoDado.Odometer" />
+      </td>
+      <td class="form-group">
+        <input type="text" required [(ngModel)]="veiculoDado.Tire_Pressure" />
+      </td>
+      <td class="form-group">
+        <input type="text" required [(ngModel)]="veiculoDado.Vehicle_Status" />
+      </td>
+      <td class="form-group">
+        <input type="text" required [(ngModel)]="veiculoDado.Battery_Status" />
+      </td>
+      <td class="form-group">
+        <input type="text" required [(ngModel)]="veiculoDado.Fuel_Level" />
+      </td>
+      <td class="form-group">
+        <input type="text" required [(ngModel)]="veiculoDado.Latitude" />
+      </td>
+      <td>
+        <input type="text" required [(ngModel)]="veiculoDado.Longitude" />
+      </td>
+    </tr>
+
+    <tr class="tdVazio text-center">
+      <td colspan="8">
+        <button type="submit" class="btn rounded mx-2" (click)="salvarDados()">
+          <i class="fa fa-plus">Adicionar</i>
+        </button>
+        <button
+          type="button"
+          class="btn rounded mx-2"
+          (click)="atualizarDados()"
+        >
+          <i class="fa fa-refresh">Atualizar</i>
+        </button>
+        <button
+          [routerLink]="['/pagina-dashboard']"
+          type="button"
+          class="btn rounded bg-danger mx-2"
+        >
+          <i class="fa fa-times">Finalizar ação</i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<app-cabecalho></app-cabecalho>

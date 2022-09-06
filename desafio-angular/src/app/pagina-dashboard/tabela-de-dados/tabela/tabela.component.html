@@ -19,13 +19,26 @@
           [formControl]="tabelaDeDados"
           [(ngModel)]="valorDoInput"
         />
-        <button type="button" class="btn opacity-75 rounded">
+        <button
+          [routerLink]="['pagina-dashboard/tabela-de-dados/adicionar']"
+          type="button"
+          class="btn opacity-75 rounded"
+        >
           <i class="fa fa-plus"></i>
         </button>
-        <button type="button" class="btn opacity-75 rounded">
+        <button
+          [routerLink]="['pagina-dashboard/tabela-de-dados/adicionar']"
+          type="button"
+          class="btn opacity-75 rounded"
+        >
           <i class="fa fa-refresh"></i>
         </button>
-        <button type="button" class="btn opacity-75 rounded">
+        <button
+          type="button"
+          class="btn opacity-75 rounded"
+          [disabled]="!valorDoInput"
+          (click)="excluir()"
+        >
           <i class="fa fa-trash"></i>
         </button>
       </td>
