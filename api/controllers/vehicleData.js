@@ -19,7 +19,7 @@ module.exports = (app) => {
     app.get('/vehicledata/vin/:VIN', (req, res) => {
         const vinNumber = req.params.VIN;
 
-        VehicleData.lista(vinNumber, res);
+        VehicleData.buscoPorVin(vinNumber, res);
     });
 
     app.post('/vehicledata', (req, res) => {
@@ -28,16 +28,16 @@ module.exports = (app) => {
         VehicleData.adiciona(vehicleData, res)
     });
 
-    app.patch('/vehicledata/:id', (req, res) => {
-        const id = parseInt(req.params.id);
+    app.put('/vehicledata/vin/:VIN', (req, res) => {
+        const vinNumber = req.params.VIN;
         const valores = req.body;
 
-        VehicleData.altera(id, valores, res);
+        VehicleData.altera(vinNumber, valores, res);
     });
 
-    app.delete('/vehicledata/:id', (req, res) => {
-        const id = parseInt(req.params.id);
+    app.delete('/vehicledata/vin/:VIN', (req, res) => {
+        const vinNumber = req.params.VIN;
 
-        VehicleData.deleta(id, res);
+        VehicleData.deleta(vinNumber, res);
     });
 }

@@ -14,7 +14,22 @@ class VehicleData {
     }
 
     lista(valor, res) {
-        const sql = `SELECT id, Odometer, Tire_Pressure, Vehicle_Status, Battery_Status, Fuel_Level, Latitude, Longitude FROM VehiclesData WHERE VIN = '${valor}'`
+        const sql = 'SELECT id, VIN, Odometer, Tire_Pressure, Vehicle_Status, Battery_Status, Fuel_Level, Latitude, Longitude FROM VehiclesData'
+
+        conexao.query(sql, (erro, resultados) => {
+            if(erro) {
+                res.status(400).json(erro)
+            } else {
+                const vehicledata = resultados
+                const result = { vehiclesData: vehicledata };
+
+                res.status(200).json(result)
+            }
+        })
+    }
+
+    buscoPorVin(valor, res) {
+        const sql = `SELECT id, VIN, Odometer, Tire_Pressure, Vehicle_Status, Battery_Status, Fuel_Level, Latitude, Longitude FROM VehiclesData WHERE VIN = '${valor}'`
 
         conexao.query(sql, (erro, resultados) => {
             if(erro) {
@@ -29,7 +44,7 @@ class VehicleData {
     }
 
     buscaPorId(id, res) {
-        const sql = `SELECT id, Odometer, Tire_Pressure, Vehicle_Status, Battery_Status, Fuel_Level, Latitude, Longitude FROM VehiclesData WHERE id=${id}`
+        const sql = `SELECT id, VIN, Odometer, Tire_Pressure, Vehicle_Status, Battery_Status, Fuel_Level, Latitude, Longitude FROM VehiclesData WHERE id=${id}`
 
         conexao.query(sql, (erro, resultados) => {
             if(erro) {
@@ -40,10 +55,10 @@ class VehicleData {
         });
     }
 
-    altera(id, valores, res) {
-        const sql = 'UPDATE VehiclesData SET ? WHERE id=?'
+    altera(vin, valores, res) {
+        const sql = 'UPDATE VehiclesData SET ? WHERE VIN=?'
 
-        conexao.query(sql, [valores, id], (erro, resultados) => {
+        conexao.query(sql, [valores, vin], (erro, resultados) => {
             if(erro) {
                 res.status(400).json(erro);
             } else {
@@ -52,14 +67,14 @@ class VehicleData {
         });
     }
 
-    deleta(id, res) {
-        const sql = 'DELETE FROM VehiclesData WHERE id=?'
+    deleta(vin, res) {
+        const sql = 'DELETE FROM VehiclesData WHERE VIN=?'
 
-        conexao.query(sql, id, (erro, resultados) =>{
+        conexao.query(sql, vin, (erro, resultados) =>{
             if(erro){
                 res.status(400).json(erro);
             } else {
-                res.status(200).json({id});
+                res.status(200).json({resultados});
             }
         });
     }
